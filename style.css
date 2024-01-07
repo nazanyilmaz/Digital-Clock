@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --hue:223;
+    --bg: hsl(var(--hue), 90%,90%);
+    --fg: hsl(var(--hue),10%,10%);
+    --primary: hsl(var(--hue),90%,55%);
+    --trans-dur: 0.3s;
+    font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+}
+
+body{
+    background: url(images/black-1072366_1280.jpg);
+    color:var(--fg);
+    font-size: 1em;
+    font-family:  "DM Sans";
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    transition: 
+    background-color var(--trans-dur),
+    color var(--trans-dur);
+
+}
+.clock{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block{
+    background-color: hsl(var(--hue),10%,90%);
+    border-radius: 0.5rem;
+    box-shadow: 0 1rem 2rem hsl(var(--hue),90%,50%,0.3);
+    font-size: 3rem;
+    line-height: 2;
+    margin: 0.75rem;
+    overflow: hidden;
+    text-align: center;
+    width: 6rem;
+    height: 6rem;
+    transition:  background-color  var(--trans-dur);
+    box-shadow:  var(--trans-dur);
+    
+}
+.block--small{
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 2rem hsl(var(--hue),90%,50%,0.3);
+    font-size: 1em;
+    line-height: 3;
+    width: 3rem;
+    height: 3rem;
+
+}
+
+.colon{
+    display: none;
+    font-size: 2em;
+    opacity: 0.5;
+    position: relative;
+}
+.colon::before,
+.colon::after{
+    background-color: currentColor;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.05em;
+    left: -0.05em;
+    width: 0.1em;
+    height: 0.1em;
+    transition: bacground-color var(--trans-dur);
+}
+
+.colon::before{
+    transform: translateY(-200%);
+}
+
+.colon::after{
+    transform: translateY(200%);
+}
+
+.digit-group{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.digits{
+    width: 100%;
+    height: 100%;
+}
+.block--bounce{
+    animation: bounce 0.7s ;
+}
+.block--bounce .digit-group{
+    animation: roll 0.7s ease-in-out forwards;
+    transform: translateY(-50%);
+}
+.block--delay1,
+.block--delay1 .digit-group{
+    animation-delay: 0.2s;
+}
+
+.block--delay2,
+.block--delay2 .digit-group{
+    animation-delay: 0.2s ;
+}
+
+@media (prefers-color-scheme:dark){
+    :root{
+        --bg:hsl(var(--hue),10%,10%);
+        --fg:hsl(var(--hue),10%,90%);
+    }
+
+    .block{
+        background-color:  hsl(var(--hue),90%,40%);
+        box-shadow: 0 0.5rem 2rem hsl(var(--hue), 90%,60%, 0.4);
+
+    }
+    .block--small{
+        box-shadow: 0 0.5rem 2ren hsla(var(--hue),90%,60%,0.4);
+    }
+}
+@media(min-width:768px){
+    .clock{
+        flex-direction: row;
+
+    }
+    .colon{
+        display: inherit;
+    }
+}
+
+@keyframes bounce{
+    from,
+    to{
+        animation-timing-function: ease-in;
+        transform: translateY(0);
+    }
+    50%{
+        animation-timing-function: ease-out;
+        transform: translateY(15%);
+    }
+}
+
+@keyframes roll{
+    from{
+        transform: translateY(-50%);
+    }
+    to{
+        transform: translate(0%);
+    }
+
+}

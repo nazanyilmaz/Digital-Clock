@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital-Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="clock" aria-label="00.00.00 AM">
+    <div class="block block--delay2" aria-hidden="true" data-time-group>
+        <div class="digit-group">
+            <div class="digits" data-time="a">00</div>
+            <div class="digits" data-time="b">00</div>   
+        </div>
+    </div>
+
+    <div class="colon"></div>
+        <div class="block block--delay1" aria-hidden="true" data-time-group>
+            <div class="digit-group">
+                <div class="digits" data-time="a">00</div>
+                <div class="digits" data-time="b">00</div>   
+            </div>
+        </div>
+    
+
+    <div class="colon"> </div>
+        <div class="block" aria-hidden="true" data-time-group>
+            <div class="digit-group">
+                <div class="digits" data-time="a">00</div>
+                <div class="digits" data-time="b">00</div>   
+            </div>
+        </div>
+   
+
+    <div class="block block--delay2 block--small" aria-hidden="true" data-time-group>
+        <div class="digit-group">
+            <div class="digits" data-time="a">PM</div>
+            <div class="digits" data-time="b">AM</div>   
+        </div>
+    </div>
+   </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
